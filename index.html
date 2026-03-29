@@ -2,44 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KNULL TEAM | SECURE GATEWAY</title>
     <style>
-        body { background: #FFD700; color: #FF0000; font-family: 'Courier New', monospace; text-align: center; padding-top: 100px; border: 20px solid #FF0000; height: 80vh; overflow: hidden; }
-        h1 { font-size: 50px; background: #000; display: inline-block; padding: 10px; border: 2px solid #FF0000; }
+        body { 
+            background-color: #FFD700; 
+            color: #FF0000; 
+            font-family: 'Courier New', monospace; 
+            text-align: center; 
+            padding-top: 100px; 
+            border: 20px solid #FF0000; 
+            height: 100vh; 
+            margin: 0;
+            box-sizing: border-box;
+        }
+        h1 { 
+            font-size: clamp(30px, 8vw, 60px); 
+            background: #000; 
+            display: inline-block; 
+            padding: 15px; 
+            border: 4px double #FF0000;
+        }
         .input-area { margin-top: 50px; }
-        input { background: #000; border: 2px solid #FF0000; color: #FFD700; padding: 10px; font-size: 20px; outline: none; }
-        button { background: #FF0000; color: #000; border: none; padding: 12px 20px; cursor: pointer; font-weight: bold; font-size: 18px; }
+        input { 
+            background: #000; 
+            border: 2px solid #FF0000; 
+            color: #FFD700; 
+            padding: 12px; 
+            font-size: 18px; 
+            outline: none;
+            width: 250px;
+        }
+        button { 
+            background: #FF0000; 
+            color: #000; 
+            border: none; 
+            padding: 13px 25px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 18px;
+            vertical-align: top;
+        }
         button:hover { background: #000; color: #FF0000; border: 1px solid #FF0000; }
-        #msg { margin-top: 20px; font-weight: bold; font-size: 22px; }
+        #msg { margin-top: 30px; font-weight: bold; font-size: 24px; text-shadow: 1px 1px #000; }
     </style>
 </head>
 <body>
     <h1>KNULL TEAM</h1>
     <div class="input-area">
-        <p style="font-weight: bold;">SYSTEM STATUS: ENCRYPTED</p>
+        <p style="font-weight: bold; font-size: 20px;">SYSTEM STATUS: ENCRYPTED</p>
         <input type="text" id="flagInput" placeholder="Enter Flag..." autocomplete="off">
         <button onclick="verify()">SUBMIT</button>
         <div id="msg"></div>
     </div>
 
     <script>
-        // Updated Base64 Key
+        // Official KNULL Team Flag Key
         const _k = "UFNOQUNFVHtDWUIzUl8xc19INGRkX2JybzAwMDBvMG8wfQ==";
 
         console.log("%cKNULL TEAM SECURITY", "color: red; font-size: 20px; font-weight: bold;");
-        console.log("Hint: Try decoding the secret variable '_k' in the console.");
+        console.log("Looking for the key? Check the variable '_k' and decode it.");
 
         function verify() {
-            const i = document.getElementById('flagInput').value;
-            const m = document.getElementById('msg');
+            const userInput = document.getElementById('flagInput').value;
+            const display = document.getElementById('msg');
             
-            // Check against encoded flag
-            if(btoa(i) === _k) {
-                m.style.color = "green";
-                m.innerText = "ACCESS GRANTED. YOU ARE KNULL.";
+            if(btoa(userInput) === _k) {
+                display.style.color = "green";
+                display.innerText = "ACCESS GRANTED. YOU ARE KNULL.";
             } else {
-                m.style.color = "red";
-                m.innerText = "WRONG FLAG. TERMINAL LOGGED.";
+                display.style.color = "red";
+                display.innerText = "WRONG FLAG. ATTEMPT LOGGED.";
             }
         }
     </script>
