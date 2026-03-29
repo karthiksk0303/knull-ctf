@@ -1,37 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>KNULL TEAM | SECURE GATEWAY</title>
-    <style>
-        body { background: #FFD700; color: #FF0000; font-family: 'Courier New', monospace; text-align: center; padding-top: 100px; border: 20px solid #FF0000; height: 80vh; overflow: hidden; }
-        h1 { font-size: 50px; background: #000; display: inline-block; padding: 10px; }
-        .input-area { margin-top: 50px; }
-        input { background: #000; border: 2px solid #FF0000; color: #FFD700; padding: 10px; font-size: 20px; }
-        #msg { margin-top: 20px; font-weight: bold; }
-    </style>
-</head>
-<body>
-    <h1>KNULL TEAM</h1>
-    <div class="input-area">
-        <p>SYSTEM STATUS: ENCRYPTED</p>
-        <input type="text" id="flagInput" placeholder="Enter Flag...">
-        <button onclick="verify()" style="background:#FF0000; color:#FFD700; border:none; padding: 12px; cursor:pointer;">SUBMIT</button>
-        <p id="msg"></p>
-    </div>
+<script>
+    // Flag encoded in Base64 (One level deep for clarity)
+    // Decoding this will give: PSNACET{CYB3R_1s_H4Rd_bro000o0o0}
+    const _k = "UFNOQUNFVHtDWUIzUl8xc19INGRkX2JybzAwMDBvMG8wfQ==";
 
-    <script>
-        // Flag hidden using string rotation and base64
-        const _k = "V0ZOUkJVTkZlRjljV1VJeVVsOW1jMUZJUkhSZmZreHliekF3TURCdlVHOXY=";
-        function verify() {
-            const i = document.getElementById('flagInput').value;
-            if(btoa(i) === atob(_k)) {
-                document.getElementById('msg').innerText = "ACCESS GRANTED. YOU ARE KNULL.";
-            } else {
-                document.getElementById('msg').innerText = "WRONG FLAG. TERMINAL LOGGED.";
-            }
+    console.log("%cKNULL TEAM SECURITY", "color: red; font-size: 25px; font-weight: bold; text-shadow: 2px 2px #000;");
+    console.log("Check the source, but the key is locked. Try decoding the '_k' variable.");
+
+    function verify() {
+        const userInput = document.getElementById('flagInput').value;
+        const msgElement = document.getElementById('msg');
+
+        // Simple and effective comparison
+        if (btoa(userInput) === _k) {
+            msgElement.innerHTML = "<span style='color: green;'>ACCESS GRANTED. YOU ARE KNULL.</span>";
+            console.log("SUCCESS: Flag matches.");
+        } else {
+            msgElement.innerHTML = "<span style='color: red;'>WRONG FLAG. TERMINAL LOGGED.</span>";
+            console.log("FAILURE: Incorrect flag attempt.");
         }
-        console.log("KNULL TEAM: Check the source, but the key is double locked.");
-    </script>
-</body>
-</html>
+    }
+
+    // Pro-tip for the "Hard" part: 
+    // If they type atob(_k) in this console, they get the flag!
+</script>
