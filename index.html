@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KNULL TEAM | SECURE GATEWAY</title>
+    <style>
+        body { background: #FFD700; color: #FF0000; font-family: 'Courier New', monospace; text-align: center; padding-top: 100px; border: 20px solid #FF0000; height: 80vh; overflow: hidden; }
+        h1 { font-size: 50px; background: #000; display: inline-block; padding: 10px; }
+        .input-area { margin-top: 50px; }
+        input { background: #000; border: 2px solid #FF0000; color: #FFD700; padding: 10px; font-size: 20px; }
+        #msg { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>KNULL TEAM</h1>
+    <div class="input-area">
+        <p>SYSTEM STATUS: ENCRYPTED</p>
+        <input type="text" id="flagInput" placeholder="Enter Flag...">
+        <button onclick="verify()" style="background:#FF0000; color:#FFD700; border:none; padding: 12px; cursor:pointer;">SUBMIT</button>
+        <p id="msg"></p>
+    </div>
+
+    <script>
+        // Flag hidden using string rotation and base64
+        const _k = "V0ZOUkJVTkZlRjljV1VJeVVsOW1jMUZJUkhSZmZreHliekF3TURCdlVHOXY=";
+        function verify() {
+            const i = document.getElementById('flagInput').value;
+            if(btoa(i) === atob(_k)) {
+                document.getElementById('msg').innerText = "ACCESS GRANTED. YOU ARE KNULL.";
+            } else {
+                document.getElementById('msg').innerText = "WRONG FLAG. TERMINAL LOGGED.";
+            }
+        }
+        console.log("KNULL TEAM: Check the source, but the key is double locked.");
+    </script>
+</body>
+</html>
